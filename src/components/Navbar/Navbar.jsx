@@ -1,4 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
+import { CgLogIn } from "react-icons/cg";
+
 
 const Navbar = () => {
   const li = (
@@ -83,7 +85,10 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 md:gap-8">{li}</ul>
         </div>
         <Link to={'/login'} className="navbar-end ">
-          <li className="btn bg-blue-400 text-white hover:bg-blue-500">Login</li>
+          <li className="btn bg-blue-400 text-white hover:bg-blue-500">
+          <CgLogIn />
+            Login
+            </li>
         </Link>
       </div>
     </div>

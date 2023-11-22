@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
-//  <BsFillEyeFill />
-// <BsFillEyeSlashFill/>
+
 
 const Login = () => {
   const [showpassword, setSetshowpassword] = useState(false);

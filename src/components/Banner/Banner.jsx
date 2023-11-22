@@ -18,7 +18,7 @@ const Banner = () => {
           />
         </div>
         <div className="">
-          <h1 className="text-5xl md:font-bold">
+          <h1 className="text-3xl md:text-5xl md:font-semibold">
             Rev up your style and performance
             <br /> with quality cars
           </h1>
