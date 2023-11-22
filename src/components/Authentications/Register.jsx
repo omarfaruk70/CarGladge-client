@@ -63,7 +63,7 @@ const Register = () => {
               onClick={()=> setSetshowpassword(!showpassword)}
               >
                 {
-                  showpassword ? <BsFillEyeSlashFill/> : <BsFillEyeFill />
+                  showpassword ?  <BsFillEyeFill /> : <BsFillEyeSlashFill/> 
                 }
               </span>
 
