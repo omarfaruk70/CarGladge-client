@@ -2,10 +2,24 @@ import { Link, NavLink } from "react-router-dom";
 import { CgLogIn } from "react-icons/cg";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Navbar = () => {
-  const {user} = useContext(AuthContext);
+  const {user, logOut} = useContext(AuthContext);
+  const logoutUser = () => {
+    logOut()
+    .then(() => {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "User log out",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
+  }
+
   const li = (
     <>
       <li>
@@ -81,27 +95,28 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to={'/'} className="btn btn-ghost text-xl">
-            <img className="w-28 rounded-lg h-12" src={'https://i.ibb.co/m88tMqF/24489871-6937176.jpg'} alt="brand logo" />
+            <img className="md:w-28 rounded-lg h-8 md:h-12" src={'https://i.ibb.co/m88tMqF/24489871-6937176.jpg'} alt="brand logo" />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 md:gap-8">{li}</ul>
         </div>
 
-        <div className="navbar-end gap-x-2 md:gap-x-5">
-        <div>
-         <div className="flex md:gap-x-5 gap-x-2  justify-center items-center">
-            <h2 className={user?.displayName ? 'gap-x-2' : 'hidden'}>{user?.displayName ? user.displayName : ' '}</h2>
-            <img className={ user?.photoURL ? "h-10 w-10 rounded-full" : "hidden"} src={user?.photoURL ? user.photoURL : 'https://i.ibb.co/rQCngXW/user.png'} alt="Profile" />
-          </div>
-        </div>
+        <div className="navbar-end md:gap-x-5">
+          {
+            user?.displayName && user?.photoURL &&  
+                <div className="flex md:gap-x-5 gap-x-2  justify-center items-center cursor-move">
+                  <h2 className={user?.displayName ? 'gap-x-2' : 'hidden'}>{user?.displayName ? user.displayName : ' '}</h2>
+                  <img className={ user?.photoURL ? "h-10 w-10 rounded-full" : "hidden"} src={user?.photoURL ? user.photoURL : 'https://i.ibb.co/rQCngXW/user.png'} alt="Profile" />
+              </div>
+          }
           <div>
           {
           user?.email   ? 
           <Link to={'/login'} >
-          <li className="btn bg-blue-400 text-white hover:bg-blue-500">
+          <li onClick={logoutUser} className="btn bg-blue-400 text-white hover:bg-blue-500 cursor-progress">
           <CgLogIn className="hidden md:block"/>
-            Login
+            Logout
             </li>
           </Link>
            : 

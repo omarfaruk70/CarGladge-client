@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
@@ -9,10 +9,10 @@ const Login = () => {
   const {loginUser} = useContext(AuthContext);
   const [showpassword, setSetshowpassword] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation;
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     if(password.length < 6){
@@ -45,7 +45,7 @@ const Login = () => {
         title: "Success",
         text: "User Login successfull",
       });
-      navigate('/')
+      navigate(location?.state ? location.state : '/')
       
      })
      .catch((error)=> {
