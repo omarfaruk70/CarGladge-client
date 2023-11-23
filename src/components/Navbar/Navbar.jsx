@@ -1,8 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import { CgLogIn } from "react-icons/cg";
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 
 const Navbar = () => {
+  const {user} = useContext(AuthContext);
   const li = (
     <>
       <li>
@@ -54,7 +57,7 @@ const Navbar = () => {
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
-            <label tabIndex="0" className="btn btn-ghost lg:hidden">
+            <label tabIndex="0" className="md:btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -84,12 +87,33 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 md:gap-8">{li}</ul>
         </div>
-        <Link to={'/login'} className="navbar-end ">
+
+        <div className="navbar-end md:gap-x-10">
+        <div>
+         <div className="flex md:gap-x-10 gap-x-3 justify-center items-center">
+            <h2>{user?.displayName ? user.displayName : ' '}</h2>
+            <img className="h-10 w-10 rounded-full " src={user?.photoURL ? user.photoURL : ' '} alt="Profile Picture" />
+          </div>
+        </div>
+          <div>
+          {
+          user?.email   ? 
+          <Link to={'/login'} >
           <li className="btn bg-blue-400 text-white hover:bg-blue-500">
-          <CgLogIn />
+          <CgLogIn className="hidden md:block"/>
             Login
             </li>
-        </Link>
+          </Link>
+           : 
+          <Link to={'/register'}>
+          <li className="btn bg-blue-400 text-white hover:bg-blue-500">
+          <CgLogIn className="hidden  md:block"/>
+            Register
+            </li>
+          </Link>
+        }
+          </div>
+        </div>
       </div>
     </div>
   );

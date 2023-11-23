@@ -1,12 +1,13 @@
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import auth from "../../../firebase.config";
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
+    const [user, setUser] = useState(null);
 
     // create a user for email and password based authentication
     const createUser = (email, password) => {
@@ -27,11 +28,32 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, githubProvider)
     }
 
+    // update profile of a user 
+    const updateUserinfo  = (name, photo) => {
+      return updateProfile(auth.currentUser, {
+        displayName: name,
+        photoURL: photo
+      })
+    }
+
+    // overserver function to grab the currentUser
+    useEffect( () => {
+     const unsubscribe =  onAuthStateChanged(auth, (currentUser)=>{
+        setUser(currentUser)
+      });
+      return () =>{
+        unsubscribe();
+      }
+    }, [])
+
+
   const authInfo = {
     createUser,
     loginUser,
     googleLogin,
-    githubLogin
+    githubLogin,
+    updateUserinfo,
+    user
   };
   return (
     <AuthContext.Provider value={authInfo}>

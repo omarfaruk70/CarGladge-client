@@ -8,7 +8,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 // <BsFillEyeSlashFill/>
 
 const Register = () => {
-  const {createUser, googleLogin, githubLogin} = useContext(AuthContext)
+  const {createUser, googleLogin, githubLogin, updateUserinfo} = useContext(AuthContext)
   const [showpassword, setSetshowpassword] = useState(false);
   const navigate = useNavigate();
   const handleRegister = (event) => {
@@ -48,7 +48,8 @@ const Register = () => {
         title: "Success",
         text: "Registration successfull",
       });
-      navigate('/')
+      updateUserinfo(name, photourl)
+      return navigate('/')
       
     })
     .catch((error) => {
