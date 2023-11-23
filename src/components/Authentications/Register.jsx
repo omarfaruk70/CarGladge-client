@@ -1,12 +1,67 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate,   } from "react-router-dom";
+import Swal from 'sweetalert2'
 import { BsGithub, BsGoogle } from "react-icons/bs";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 //  <BsFillEyeFill />
 // <BsFillEyeSlashFill/>
 
 const Register = () => {
-  const [showpassword, setSetshowpassword] = useState(false)
+  const {createUser} = useContext(AuthContext)
+  const [showpassword, setSetshowpassword] = useState(false);
+  const navigate = useNavigate();
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photourl = form.photourl.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    if(password.length < 6){
+     return Swal.fire({
+        icon: "error",
+        title: "Invalid formate...",
+        text: "password is less than 6 characters"
+      });
+    }  
+    else if(!/^(?=.*[A-Z]).+$/.test(password)){
+      return Swal.fire({
+        icon: "error",
+        title: "Invalid formate...",
+        text: "Don't have a capital letter",
+      });
+    }
+    else{
+      if(!/^(?=.*[#@$%&]).*$/.test(password))
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Don't Have a special charecter",
+      });
+    }
+
+    createUser(email, password)
+    .then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Registration successfull",
+      });
+      navigate('/')
+      
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.message,
+      });      
+    }
+      
+      )
+  }
+  
 
   return (
     <div className="max-w-7xl  rounded-l-full bg-blue-300 mx-auto">
@@ -14,7 +69,7 @@ const Register = () => {
         <h4 className="block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
           Register your Account
         </h4>
-        <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+        <form onSubmit={handleRegister} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
           <div className="mb-4 flex flex-col gap-6">
             <div className="relative h-11 w-full min-w-[200px]">
               <input

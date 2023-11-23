@@ -16,7 +16,7 @@ const SubscribeNewslater = () => {
           ></path>
         </svg>
         </div>
-            <form>
+          <form>
           <fieldset className="form-control w-80 mx-auto mt-5 md:-mt-20 lg:mb-12 my-20">
             <label className="label">
               <span className="label-text italic text-lg font-semibold">Provide your email address</span>
