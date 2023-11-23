@@ -8,7 +8,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 // <BsFillEyeSlashFill/>
 
 const Register = () => {
-  const {createUser} = useContext(AuthContext)
+  const {createUser, googleLogin, githubLogin} = useContext(AuthContext)
   const [showpassword, setSetshowpassword] = useState(false);
   const navigate = useNavigate();
   const handleRegister = (event) => {
@@ -57,10 +57,30 @@ const Register = () => {
         title: "Oops...",
         text: error.message,
       });      
-    }
-      
-      )
+    })
   }
+    // social login
+    const socialLogin = (media) => {
+      media()
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "User Logged in successfully",
+        });
+        navigate('/');
+        
+      })
+      .catch(error => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+        });
+        
+      })
+
+    } 
   
 
   return (
@@ -190,8 +210,12 @@ const Register = () => {
         <div className="mt-5 flex flex-col justify-center items-center py-5">
           -----Continue With-----
           <div className="flex mt-4 gap-10 text-3xl text-blue-950 cursor-pointer">
-          <BsGoogle />
+         <span onClick={()=> socialLogin(googleLogin)}>
+         <BsGoogle />
+         </span>
+         <span onClick={()=> socialLogin (githubLogin)}>
           <BsGithub />
+         </span>
           </div>
         </div>
 
