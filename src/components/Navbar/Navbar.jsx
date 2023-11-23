@@ -88,11 +88,11 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 md:gap-8">{li}</ul>
         </div>
 
-        <div className="navbar-end md:gap-x-10">
+        <div className="navbar-end gap-x-2 md:gap-x-5">
         <div>
-         <div className="flex md:gap-x-10 gap-x-3 justify-center items-center">
-            <h2>{user?.displayName ? user.displayName : ' '}</h2>
-            <img className="h-10 w-10 rounded-full " src={user?.photoURL ? user.photoURL : ' '} alt="Profile Picture" />
+         <div className="flex md:gap-x-5 gap-x-2  justify-center items-center">
+            <h2 className={user?.displayName ? 'gap-x-2' : 'hidden'}>{user?.displayName ? user.displayName : ' '}</h2>
+            <img className={ user?.photoURL ? "h-10 w-10 rounded-full" : "hidden"} src={user?.photoURL ? user.photoURL : 'https://i.ibb.co/rQCngXW/user.png'} alt="Profile" />
           </div>
         </div>
           <div>
