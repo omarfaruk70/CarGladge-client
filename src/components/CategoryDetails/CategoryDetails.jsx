@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import { AiFillEdit, AiFillEye } from "react-icons/ai";
 import Sliders from "./Sliders";
 
@@ -30,10 +30,10 @@ const CategoryDetails = () => {
                     <p className="font-bold">Price: {data.price} $</p>
                     <p className="font-bold">Ratings: {data.ratings}</p>
                   </div>
-                  <div className="flex flex-col gap-5" >
-                 <span className="btn bg-blue-500 hover:bg-blue-800 text-white"> <AiFillEye /></span>
-                 <span className="btn bg-green-500 hover:bg-green-800 text-white"> <AiFillEdit /></span>
-                  </div>
+                    <div className="flex flex-col gap-5">
+                     <Link to={`/categories/:brand_name/${data._id}`} className="btn bg-blue-500 hover:bg-blue-800 text-white"> <AiFillEye /></Link>
+                     <Link to={`/categories/:brand_name/${data._id}`} className="btn bg-green-500 hover:bg-green-800 text-white"> <AiFillEdit /></Link>
+                    </div>
                   </div>
                 </div>
                </div>

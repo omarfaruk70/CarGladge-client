@@ -1,8 +1,34 @@
 const Addproduct = () => {
+  const handleAddProduct = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.carname.value;
+    const img = form.photourl.value;
+    const brand_name = form.brandname.value;
+    const type = form.cartype.value;
+    const price = form.carprice.value;
+    const description = form.description.value;
+    const addCarinfo = {name, img, brand_name, type, price, description};
+    fetch('http://localhost:5000/brandproducts', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(addCarinfo)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if(data.insertedId){
+        alert('data gesega')
+      }
+    })
+  }
+  
   return (
     <div className="max-w-5xl space-y-4 mb-5 text-2xl font-bold mx-auto">
         <h2 className="text-center">Add Your Favourite Car</h2>
-      <form className="max-w-md p-10 rounded-md mx-auto bg-gradient-to-b from-blue-300">
+      <form onSubmit={handleAddProduct} className="max-w-md p-10 rounded-md mx-auto bg-gradient-to-b from-blue-300">
         <div className="relative z-0 w-full mb-5 group">
           <input
             type="text"
@@ -48,7 +74,7 @@ const Addproduct = () => {
             htmlFor="floating-brandname"
             className="peer-focus:font-medium absolute text-sm text-black dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
-           Car Brand Name
+           Car Brand Name(Audi, Tesla, Marcidiz, Lamborgini...)
           </label>
         </div>
         <div className="grid md:grid-cols-2 md:gap-6">

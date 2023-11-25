@@ -8,6 +8,7 @@ import Login from "./components/Authentications/Login";
 import Register from "./components/Authentications/Register";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import CategoryDetails from "./components/CategoryDetails/CategoryDetails";
+import CarDetails from "./components/CarDetails/CarDetails";
 
 const Routes = createBrowserRouter([
     {
@@ -23,6 +24,11 @@ const Routes = createBrowserRouter([
                 path: '/categories/:brand_name',
                 element: <CategoryDetails></CategoryDetails>,
                 loader: ({params}) => fetch(`http://localhost:5000/brandproducts/${params.brand_name}`)
+            },
+            {
+                path: '/categories/:brand_name/:id',
+                element: <PrivateRoute><CarDetails></CarDetails></PrivateRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/brandproducts/${params.id}`)
             },
             {
                 path: '/addproduct',
