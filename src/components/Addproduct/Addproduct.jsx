@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const Addproduct = () => {
   const handleAddProduct = (event) => {
     event.preventDefault();
@@ -20,7 +22,11 @@ const Addproduct = () => {
     .then(data => {
       console.log(data);
       if(data.insertedId){
-        alert('data gesega')
+        Swal.fire({
+          title: "Great!",
+          text: "Your wishes Car is Added",
+          icon: "success"
+        });
       }
     })
   }
