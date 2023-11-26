@@ -9,7 +9,7 @@ const Login = () => {
   const {loginUser} = useContext(AuthContext);
   const [showpassword, setSetshowpassword] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation;
+  const location = useLocation();
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;

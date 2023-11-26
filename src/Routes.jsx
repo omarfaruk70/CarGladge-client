@@ -9,6 +9,7 @@ import Register from "./components/Authentications/Register";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import CategoryDetails from "./components/CategoryDetails/CategoryDetails";
 import CarDetails from "./components/CarDetails/CarDetails";
+import UpdateCarDetails from "./components/UpdateCarDetails/UpdateCarDetails";
 
 const Routes = createBrowserRouter([
     {
@@ -31,12 +32,18 @@ const Routes = createBrowserRouter([
                 loader: ({params}) => fetch(`http://localhost:5000/brandproducts/${params.id}`)
             },
             {
+                path: '/updatedCar/:brand_name/:id',
+                element: <PrivateRoute><UpdateCarDetails></UpdateCarDetails></PrivateRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/brandproducts/${params.id}`)
+            },
+            {
                 path: '/addproduct',
                 element: <PrivateRoute><Addproduct></Addproduct></PrivateRoute>
             },
             {
                 path: '/mycart',
-                element: <PrivateRoute><Mycart></Mycart></PrivateRoute>
+                element: <PrivateRoute><Mycart></Mycart></PrivateRoute>,
+                
             },
             {
                 path: '/login',

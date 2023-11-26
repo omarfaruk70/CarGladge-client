@@ -1,16 +1,15 @@
-import { Link, useNavigate,   } from "react-router-dom";
+import { Link, useLocation, useNavigate,   } from "react-router-dom";
 import Swal from 'sweetalert2'
 import { BsGithub, BsGoogle } from "react-icons/bs";
 import { useContext, useState } from "react";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-//  <BsFillEyeFill />
-// <BsFillEyeSlashFill/>
 
 const Register = () => {
   const {createUser, googleLogin, githubLogin, updateUserinfo} = useContext(AuthContext)
   const [showpassword, setSetshowpassword] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -49,7 +48,7 @@ const Register = () => {
         text: "Registration successfull",
       });
       updateUserinfo(name, photourl)
-      return navigate('/')
+      return navigate(location?.state ? location.state : '/')
       
     })
     .catch((error) => {

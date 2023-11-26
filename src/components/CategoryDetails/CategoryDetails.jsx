@@ -32,7 +32,7 @@ const CategoryDetails = () => {
                   </div>
                     <div className="flex flex-col gap-5">
                      <Link to={`/categories/:brand_name/${data._id}`} className="btn bg-blue-500 hover:bg-blue-800 text-white"> <AiFillEye /></Link>
-                     <Link to={`/categories/:brand_name/${data._id}`} className="btn bg-green-500 hover:bg-green-800 text-white"> <AiFillEdit /></Link>
+                     <Link to={`/updatedCar/:brand_name/${data._id}`} className="btn bg-green-500 hover:bg-green-800 text-white"> <AiFillEdit /></Link>
                     </div>
                   </div>
                 </div>
