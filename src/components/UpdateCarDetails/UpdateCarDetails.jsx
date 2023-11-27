@@ -15,7 +15,7 @@ const UpdateCarDetails = () => {
     const price = form.carprice.value;
     const description = form.description.value;
     const addCarinfo = { name, img, brand_name, type, price, description };
-    fetch(`https://car-gladge-server-iowomn0wy-omar-faruks-projects.vercel.app/brandproducts/brandproducts/${id}`, {
+    fetch(`https://car-gladge-server-600enke9u-omar-faruks-projects.vercel.app/brandproducts/brandproducts/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
