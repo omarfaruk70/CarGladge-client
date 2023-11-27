@@ -24,17 +24,17 @@ const Routes = createBrowserRouter([
             {
                 path: '/categories/:brand_name',
                 element: <CategoryDetails></CategoryDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/brandproducts/${params.brand_name}`)
+                loader: ({params}) => fetch(`https://car-gladge-server-iowomn0wy-omar-faruks-projects.vercel.app/brandproducts/brandproducts/${params.brand_name}`)
             },
             {
                 path: '/categories/:brand_name/:id',
                 element: <PrivateRoute><CarDetails></CarDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/brandproducts/${params.id}`)
+                loader: ({params}) => fetch(`https://car-gladge-server-iowomn0wy-omar-faruks-projects.vercel.app/brandproducts/brandproducts/${params.id}`)
             },
             {
                 path: '/updatedCar/:brand_name/:id',
                 element: <PrivateRoute><UpdateCarDetails></UpdateCarDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/brandproducts/${params.id}`)
+                loader: ({params}) => fetch(`https://car-gladge-server-iowomn0wy-omar-faruks-projects.vercel.app/brandproducts/brandproducts/${params.id}`)
             },
             {
                 path: '/addproduct',
@@ -43,7 +43,7 @@ const Routes = createBrowserRouter([
             {
                 path: '/mycart',
                 element: <PrivateRoute><Mycart></Mycart></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/mycart')
+                loader: () => fetch('https://car-gladge-server-iowomn0wy-omar-faruks-projects.vercel.app/brandproducts/mycart')
             },
             {
                 path: '/login',

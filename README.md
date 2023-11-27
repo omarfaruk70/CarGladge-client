@@ -1,8 +1,12 @@
-# React + Vite
+<!-- Here is the  -->
+website name :  solutionMania,
+Website live link: 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+#### 5 features of the website 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* login and register
+* dynamically route will change and privateroute
+* google login / github login
+* login with email and password
+* aos animation and form will not sumbit if required data has missing

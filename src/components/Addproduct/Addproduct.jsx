@@ -11,7 +11,7 @@ const Addproduct = () => {
     const price = form.carprice.value;
     const description = form.description.value;
     const addCarinfo = {name, img, brand_name, type, price, description};
-    fetch('http://localhost:5000/brandproducts', {
+    fetch('https://car-gladge-server-iowomn0wy-omar-faruks-projects.vercel.app/brandproducts/brandproducts', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

@@ -8,7 +8,7 @@ const CarDetails = () => {
   const { name, brand_name, img, price, ratings } = singleData;
   const cartCollection = {id, name,brand_name, img, price, ratings};
   const addToCart = () => {
-   fetch(`http://localhost:5000/cartcollection`,{
+   fetch(`https://car-gladge-server-iowomn0wy-omar-faruks-projects.vercel.app/brandproducts/cartcollection`,{
     method: 'POST',
     headers: {
       'content-type': 'application/json'

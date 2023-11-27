@@ -16,7 +16,7 @@ const Mycart = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if(result.isConfirmed) {
-        fetch(`http://localhost:5000/mycart/${id}`, {
+        fetch(`https://car-gladge-server-iowomn0wy-omar-faruks-projects.vercel.app/brandproducts/mycart/${id}`, {
           method: "DELETE",
         }).then((res) => res.json())
           .then((data) => {

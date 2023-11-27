@@ -4,14 +4,14 @@ import ShowallCategories from "../ShowallCategories/ShowallCategories";
 const BrandCategories = () => {
   const [category, setCategory] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/categoryitem")
+    fetch("https://car-gladge-server-iowomn0wy-omar-faruks-projects.vercel.app/brandproducts/categoryitem")
       .then(res => res.json())
       .then(categories => {
         setCategory(categories);
       });
   }, []);
   return (
-    <div className="md:mt-32 lg:mt-5 dark:text-white">
+    <div className="md:mt-32 lg:mt-5  dark:text-white">
       <h2 className="text-center font-bold text-3xl p-10 mx-2 md:py-20">
         Brand new categories Are here...
       </h2>
