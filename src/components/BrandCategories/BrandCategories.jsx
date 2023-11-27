@@ -11,7 +11,7 @@ const BrandCategories = () => {
       });
   }, []);
   return (
-    <div className="md:mt-32 lg:mt-5">
+    <div className="md:mt-32 lg:mt-5 dark:text-white">
       <h2 className="text-center font-bold text-3xl p-10 mx-2 md:py-20">
         Brand new categories Are here...
       </h2>

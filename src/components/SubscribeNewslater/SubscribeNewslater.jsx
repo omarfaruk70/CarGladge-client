@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const SubscribeNewslater = () => {
   return (
     <div>
-      <div>
+      <div className="dark:text-white">
         <h2 className="text-center footer-title text-2xl">
           Connect with us to know the featured offer
         </h2>
@@ -19,7 +19,7 @@ const SubscribeNewslater = () => {
           <form>
           <fieldset className="form-control w-80 mx-auto mt-5 md:-mt-20 lg:mb-12 my-20">
             <label className="label">
-              <span className="label-text italic text-lg font-semibold">Provide your email address</span>
+              <span className="label-text italic text-lg font-semibold  dark:text-white">Provide your email address</span>
             </label>
             <div className="join">
               <input
