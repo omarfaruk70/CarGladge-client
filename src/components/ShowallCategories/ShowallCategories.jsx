@@ -5,7 +5,7 @@ const ShowallCategories = ({category}) => {
     return (
         <Link to={`/categories/${brand_name}`}>
         <div className="card mx-5 md:mx-auto  card-compact md:w-96 bg-base-100 shadow-xl cursor-pointer">
-        <figure><img src={image_url} className='h-80' alt="Shoes"/></figure>
+        <figure><img src={image_url} className='h-80' alt="BrandPhoto"/></figure>
         <div className='btn'>
         <p className='text-center font-extrabold'>{brand_name}</p>
         </div>

@@ -4,7 +4,7 @@ import ShowallCategories from "../ShowallCategories/ShowallCategories";
 const BrandCategories = () => {
   const [category, setCategory] = useState([]);
   useEffect(() => {
-    fetch("https://car-gladge-server-600enke9u-omar-faruks-projects.vercel.app/brandproducts/categoryitem")
+    fetch("https://car-gladge-server-rn147lnd5-omar-faruks-projects.vercel.app/categoryitem")
       .then(res => res.json())
       .then(categories => {
         setCategory(categories);

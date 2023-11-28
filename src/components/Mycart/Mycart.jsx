@@ -18,7 +18,7 @@ const Mycart = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `https://car-gladge-server-600enke9u-omar-faruks-projects.vercel.app/brandproducts/mycart/${id}`,
+          `https://car-gladge-server-rn147lnd5-omar-faruks-projects.vercel.app/mycart/${id}`,
           {
             method: "DELETE",
           }

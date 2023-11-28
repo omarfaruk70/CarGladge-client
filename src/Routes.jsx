@@ -24,17 +24,17 @@ const Routes = createBrowserRouter([
             {
                 path: '/categories/:brand_name',
                 element: <CategoryDetails></CategoryDetails>,
-                loader: ({params}) => fetch(`https://car-gladge-server-600enke9u-omar-faruks-projects.vercel.app/brandproducts/brandproducts/${params.brand_name}`)
+                loader: ({params}) => fetch(`https://car-gladge-server-rn147lnd5-omar-faruks-projects.vercel.app/brandproducts/${params.brand_name}`)
             },
             {
                 path: '/categories/:brand_name/:id',
                 element: <PrivateRoute><CarDetails></CarDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`https://car-gladge-server-600enke9u-omar-faruks-projects.vercel.app/brandproducts/brandproducts/${params.id}`)
+                loader: ({params}) => fetch(`https://car-gladge-server-rn147lnd5-omar-faruks-projects.vercel.app/brandproducts/${params.id}`)
             },
             {
                 path: '/updatedCar/:brand_name/:id',
                 element: <PrivateRoute><UpdateCarDetails></UpdateCarDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`https://car-gladge-server-600enke9u-omar-faruks-projects.vercel.app/brandproducts/brandproducts/${params.id}`)
+                loader: ({params}) => fetch(`https://car-gladge-server-rn147lnd5-omar-faruks-projects.vercel.app/brandproducts/${params.id}`)
             },
             {
                 path: '/addproduct',
@@ -43,7 +43,7 @@ const Routes = createBrowserRouter([
             {
                 path: '/mycart',
                 element: <PrivateRoute><Mycart></Mycart></PrivateRoute>,
-                loader: () => fetch('https://car-gladge-server-600enke9u-omar-faruks-projects.vercel.app/brandproducts/mycart')
+                loader: () => fetch('https://car-gladge-server-rn147lnd5-omar-faruks-projects.vercel.app/mycart')
             },
             {
                 path: '/login',

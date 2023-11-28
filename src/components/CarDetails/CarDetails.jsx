@@ -10,7 +10,7 @@ const CarDetails = () => {
   const cartCollection = { id, name, brand_name, img, price, ratings };
   const addToCart = () => {
     fetch(
-      `https://car-gladge-server-600enke9u-omar-faruks-projects.vercel.app/brandproducts/cartcollection`,
+      `https://car-gladge-server-rn147lnd5-omar-faruks-projects.vercel.app/cartcollection`,
       {
         method: "POST",
         headers: {
