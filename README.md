@@ -9,4 +9,5 @@ Website live link: https://cargladge.web.app/
 * dynamically route will change and privateroute
 * google login / github login
 * login with email and password
-* aos animation and form will not sumbit if required data has missing
+* form will not sumbit if required data has missing
+* add car, remove car, ad to cart , updated car option added
