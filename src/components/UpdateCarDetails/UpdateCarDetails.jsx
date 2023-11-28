@@ -1,10 +1,11 @@
+import { Helmet } from "react-helmet-async";
 import { useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 const UpdateCarDetails = () => {
   const data = useLoaderData();
   const { id } = useParams();
   const carinfo = data.find((car) => car._id == id);
-  const {brand_name, name, img, price, type} = carinfo
+  const { brand_name, name, img, price, type } = carinfo;
   const handleUpdateProducts = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -15,13 +16,16 @@ const UpdateCarDetails = () => {
     const price = form.carprice.value;
     const description = form.description.value;
     const addCarinfo = { name, img, brand_name, type, price, description };
-    fetch(`https://car-gladge-server-600enke9u-omar-faruks-projects.vercel.app/brandproducts/brandproducts/${id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(addCarinfo),
-    })
+    fetch(
+      `https://car-gladge-server-600enke9u-omar-faruks-projects.vercel.app/brandproducts/brandproducts/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(addCarinfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -29,7 +33,7 @@ const UpdateCarDetails = () => {
           Swal.fire({
             title: "Success",
             text: "Updated successful",
-            icon: "success"
+            icon: "success",
           });
         }
       });
@@ -38,6 +42,9 @@ const UpdateCarDetails = () => {
   return (
     <div>
       <div className="max-w-5xl space-y-4 mb-5 text-2xl font-bold mx-auto">
+        <Helmet>
+          <title>CarGladge | Update Car</title>
+        </Helmet>
         <h2 className="text-center">Update Car info</h2>
         <form
           onSubmit={handleUpdateProducts}

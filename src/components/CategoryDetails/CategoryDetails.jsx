@@ -1,6 +1,7 @@
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { AiFillEdit, AiFillEye } from "react-icons/ai";
 import Sliders from "./Sliders";
+import { Helmet } from "react-helmet-async";
 
 const CategoryDetails = () => {
   const loadedData = useLoaderData();
@@ -10,6 +11,9 @@ const CategoryDetails = () => {
   );
   return (
     <div className="bg-base-300 py-5">
+       <Helmet>
+        <title>CarGladge | CategoryDetails</title>
+       </Helmet>
       <div className="max-w-5xl py-5 mx-auto mb-5">
         <Sliders images={specificData?.map((data) => data.img)} />
       </div>

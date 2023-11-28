@@ -3,10 +3,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
-
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
-  const {loginUser} = useContext(AuthContext);
+  const { loginUser } = useContext(AuthContext);
   const [showpassword, setSetshowpassword] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,49 +15,49 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    if(password.length < 6){
+    if (password.length < 6) {
       return Swal.fire({
-         icon: "error",
-         title: "Invalid formate...",
-         text: "password is less than 6 characters"
-       });
-     }  
-     else if(!/^(?=.*[A-Z]).+$/.test(password)){
-       return Swal.fire({
-         icon: "error",
-         title: "Invalid formate...",
-         text: "Don't have a capital letter",
-       });
-     }
-     else{
-       if(!/^(?=.*[#@$%&]).*$/.test(password))
-       return Swal.fire({
-         icon: "error",
-         title: "Oops...",
-         text: "Don't Have a special charecter",
-       });
-     }
-
-     loginUser(email, password)
-     .then(() => {
-      Swal.fire({
-        icon: "success",
-        title: "Success",
-        text: "User Login successfull",
-      });
-      navigate(location?.state ? location.state : '/')
-      
-     })
-     .catch((error)=> {
-      Swal.fire({
         icon: "error",
-        title: "Oops...",
-        text: error.message
+        title: "Invalid formate...",
+        text: "password is less than 6 characters",
       });
-     })
-  }
+    } else if (!/^(?=.*[A-Z]).+$/.test(password)) {
+      return Swal.fire({
+        icon: "error",
+        title: "Invalid formate...",
+        text: "Don't have a capital letter",
+      });
+    } else {
+      if (!/^(?=.*[#@$%&]).*$/.test(password))
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Don't Have a special charecter",
+        });
+    }
+
+    loginUser(email, password)
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "User Login successfull",
+        });
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+        });
+      });
+  };
   return (
     <div className="max-w-7xl rounded-l-3xl rounded-r-full bg-blue-300 mx-auto">
+      <Helmet>
+        <title>CarGladge | Login</title>
+      </Helmet>
       <div className="relative flex justify-center items-center flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none">
         <h4 className="block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
           Login
@@ -65,7 +65,10 @@ const Login = () => {
         <p className="mt-1 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
           Enter your details to continue.
         </p>
-        <form onSubmit={handleLogin} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+        <form
+          onSubmit={handleLogin}
+          className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
+        >
           <div className="mb-4 flex flex-col gap-6">
             <div className="relative h-11 w-full min-w-[200px]">
               <input
@@ -103,9 +106,7 @@ const Login = () => {
                   className="absolute text-lg top-3.5 right-0 mr-5 cursor-pointer"
                   onClick={() => setSetshowpassword(!showpassword)}
                 >
-                  {
-                    showpassword ? <BsFillEyeFill /> : <BsFillEyeSlashFill/>
-                  }
+                  {showpassword ? <BsFillEyeFill /> : <BsFillEyeSlashFill />}
                 </span>
               </div>
 

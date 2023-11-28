@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import { useLoaderData } from "react-router-dom";
 import { AiFillDelete } from "react-icons/ai";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 const Mycart = () => {
   const loadedData = useLoaderData();
   const [mycart, setMycart] = useState(loadedData);
@@ -15,21 +16,28 @@ const Mycart = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      if(result.isConfirmed) {
-        fetch(`https://car-gladge-server-600enke9u-omar-faruks-projects.vercel.app/brandproducts/mycart/${id}`, {
-          method: "DELETE",
-        }).then((res) => res.json())
+      if (result.isConfirmed) {
+        fetch(
+          `https://car-gladge-server-600enke9u-omar-faruks-projects.vercel.app/brandproducts/mycart/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
+          .then((res) => res.json())
           .then((data) => {
-           if(data.deletedCount > 0){
-             const remaining = mycart.filter((cart) => cart._id !== id);
-             setMycart(remaining);
-           }
+            if (data.deletedCount > 0) {
+              const remaining = mycart.filter((cart) => cart._id !== id);
+              setMycart(remaining);
+            }
           });
       }
     });
   };
   return (
     <div className="mx-5 my-10">
+      <Helmet>
+        <title>CarGladge | My Cart</title>
+      </Helmet>
       {mycart?.length > 0 ? (
         <div className=" grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mx-8">
           {mycart.map((data) => (
